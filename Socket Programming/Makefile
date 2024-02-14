@@ -33,15 +33,15 @@ FILES_OBJ = $(patsubst %, $(DIR_OBJ)/%.o, $(basename $(FILES_NOMAIN)))
 
 #----------------------------------------
 
-all: $(OUT_EXE_RESTAURANT) $(OUT_EXE_CUSTOMER) $(OUT_EXE_SUPPLIER)
+all: $(DIR_BIN)/$(OUT_EXE_RESTAURANT) $(DIR_BIN)/$(OUT_EXE_CUSTOMER) $(DIR_BIN)/$(OUT_EXE_SUPPLIER)
 
-$(OUT_EXE_RESTAURANT): $(DIR_OBJ)/restaurant.o $(FILES_OBJ)
+$(DIR_BIN)/$(OUT_EXE_RESTAURANT): $(DIR_OBJ)/restaurant.o $(FILES_OBJ)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-$(OUT_EXE_CUSTOMER): $(DIR_OBJ)/customer.o $(FILES_OBJ)
+$(DIR_BIN)/$(OUT_EXE_CUSTOMER): $(DIR_OBJ)/customer.o $(FILES_OBJ)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-$(OUT_EXE_SUPPLIER): $(DIR_OBJ)/supplier.o $(FILES_OBJ)
+$(DIR_BIN)/$(OUT_EXE_SUPPLIER): $(DIR_OBJ)/supplier.o $(FILES_OBJ)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 DEPFLAGS    = -MT $@ -MMD -MP -MF $(DIR_DEP)/$*.dTMP
